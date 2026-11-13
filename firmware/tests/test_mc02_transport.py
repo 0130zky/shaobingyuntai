@@ -135,6 +135,17 @@ int main(void){
  bytes(f,18);tick+=101;Board_RemotePoll();assert(!SentryRemote_Fresh(tick));
  for(int i=0;i<8;i++)bytes(f,18);Board_RemotePoll();assert(!SentryRemote_Fresh(tick));
  tick+=4;bytes(f,18);Board_RemotePoll();tick+=4;bytes(f,18);Board_RemotePoll();assert(SentryRemote_Fresh(tick));
+ // A panel signature requires a changing heartbeat; frozen keys expire
+ // even while valid DBUS frames continue to arrive.
+ tick+=4;dbus(f,1024,1024,1);f[14]=1;f[15]=0x40;
+ bytes(f,18);Board_RemotePoll();assert(SentryRemote_Keys(tick)==0);
+ for(int i=0;i<6;i++){tick+=14;bytes(f,18);Board_RemotePoll();}
+ f[15]=0xc0;f[6]=0xfe;f[7]=0xff;f[12]=1;
+ bytes(f,18);Board_RemotePoll();assert(SentryRemote_Keys(tick)==1);
+ assert(sentry_remote.mouse[0]==-2&&sentry_remote.buttons[0]==1);
+ for(int i=0;i<18;i++){tick+=14;bytes(f,18);Board_RemotePoll();}
+ assert(SentryRemote_Fresh(tick)&&SentryRemote_Keys(tick)==0);
+ f[14]=f[15]=0;tick+=4;bytes(f,18);Board_RemotePoll();assert(SentryRemote_Keys(tick)==0);
  HAL_UART_ErrorCallback(&huart5);Board_RemotePoll();assert(!SentryRemote_Fresh(tick)&&board_uart_errors==1);
  for(int i=0;i<5;i++)rx_headers[i]=(FDCAN_RxHeaderTypeDef){.Identifier=0x11,.IdType=FDCAN_STANDARD_ID,.RxFrameType=FDCAN_DATA_FRAME,.FDFormat=FDCAN_CLASSIC_CAN,.DataLength=FDCAN_DLC_BYTES_8};
  rx_headers[1].IdType=FDCAN_EXTENDED_ID;rx_headers[2].RxFrameType=FDCAN_REMOTE_FRAME;

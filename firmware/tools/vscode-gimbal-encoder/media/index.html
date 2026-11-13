@@ -16,6 +16,19 @@
 </header>
 <div id="error" role="alert" hidden></div>
 
+<section class="dt7-block">
+  <h2>DT7 键鼠中转</h2>
+  <div class="controls"><select id="dt7Port" aria-label="DT7 USB 串口"></select>
+    <button id="dt7Toggle">连接 DT7</button><button id="dt7Stop">松开全部</button></div>
+  <p id="dt7State" class="secondary">未连接</p>
+  <div id="keyPad" tabindex="0" aria-label="键盘控制区域">
+    点击此处后使用 W / S 调 Pitch（35%），A / D 折叠 / 展开；按住运行，松开保持。
+    <div class="build-actions"><button data-key="1">W · Pitch +</button><button data-key="2">S · Pitch −</button>
+    <button data-key="4">A · 折叠</button><button data-key="8">D · 展开</button></div>
+  </div>
+  <p class="secondary hint">保留实体 S1/S2 使能条件；先中立，再使能。Pitch 沿用原有逻辑，仅展开完成后可调。
+    失焦、隐藏、断开时清空按键。这里不能模拟实体摇杆或拨杆。鼠标暂只解码显示，不接入电机。</p>
+</section>
 <section class="axes">
   <article class="axis" id="foldCard">
     <div class="axis-head">
@@ -90,7 +103,7 @@
 </section>
 
 <footer class="secondary">
-  串口只读：仅解析 USB CDC 的 <code>SENTRY</code> 状态行（约 100&nbsp;ms 一行），不下发使能、标定或运动命令。
+  板端遥测串口只读：仅解析 USB CDC 的 <code>SENTRY</code> 状态行（约 100&nbsp;ms 一行），不下发使能、标定或运动命令。
   编码值由驱动器 MIT 位置字解析，量程 ±12.5&nbsp;rad 对应 0–65535；角度由板端 mrad 换算。
 </footer>
 <script nonce="{{nonce}}" src="{{script}}"></script></body></html>

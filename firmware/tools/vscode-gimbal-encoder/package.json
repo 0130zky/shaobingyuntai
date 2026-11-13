@@ -2,7 +2,7 @@
   "name": "robot-template-gimbal-encoder",
   "displayName": "robot_template 云台编码器",
   "description": "VS Code内显示折叠与Pitch两台DM4310的原始编码值、角度和反馈状态。",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "local-robot-template",
   "engines": {
     "vscode": "^1.90.0"

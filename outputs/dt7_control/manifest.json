@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-13",
+  "extension_version": "0.3.0",
+  "program_verified_reset": true,
+  "physical_motion_tested": false,
+  "live_link_test": "W/S/A/D, release, disconnect; S1=1 and master=0 throughout",
+  "motor_feedback": "No CAN feedback observed after reset",
+  "sha256": {
+    "firmware/build/SentryH7/sentry_dm_mc02.elf": "561714f7381e7a38a28d8b94793f4c5a52f8c6407c4b7e991cb20cde52513533",
+    "firmware/vscode-gimbal-encoder.vsix": "fb1fd9bf0d1d504ede3352adffd0ae4546b78011e5575b7e7d588922ba953e67",
+    "outputs/dt7_control/pre_dt7_flash.bin": "95d28e4b754543ed786577aafadee042b0d15e09d308f44c6913d09cd573e1f0"
+  }
+}

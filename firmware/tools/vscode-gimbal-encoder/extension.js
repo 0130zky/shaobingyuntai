@@ -83,9 +83,10 @@ async function open(context) {
       .replaceAll('{{style}}', webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media/style.css')).toString())
       .replaceAll('{{script}}', webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media/dashboard.js')).toString());
     webview.html = html;
+    panel.onDidChangeViewState(e => { if (!e.webviewPanel.visible) rpc('dt7_input', {keys: 0}).catch(() => {}); });
     panel.onDidDispose(() => { panel = undefined; stop(); });
     webview.onDidReceiveMessage(async message => {
-      const allowed = ['state', 'connect', 'disconnect', 'ports', 'build', 'flash', 'program', 'cancel'];
+      const allowed = ['state', 'connect', 'disconnect', 'ports', 'build', 'flash', 'program', 'cancel', 'dt7_connect', 'dt7_disconnect', 'dt7_input'];
       if (!allowed.includes(message.method)) {
         webview.postMessage({id: message.id, error: 'Unsupported method: ' + message.method}); return;
       }

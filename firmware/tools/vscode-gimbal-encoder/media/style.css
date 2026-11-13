@@ -137,3 +137,7 @@ code { font-family: var(--vscode-editor-font-family, monospace); font-size: .95e
   .hero { font-size: 36px; }
   #chart { height: 200px; }
 }
+
+.dt7-block { margin: 16px 0; padding: 14px; border: 1px solid var(--border); border-radius: 8px; }
+#keyPad { padding: 12px; margin-top: 12px; border: 1px dashed var(--border); border-radius: 6px; }
+#keyPad:focus-within, #keyPad:focus { outline: 2px solid var(--series-fold); }

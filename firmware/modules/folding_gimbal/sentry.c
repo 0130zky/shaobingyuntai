@@ -24,6 +24,7 @@ typedef struct {
     uint32_t age[2],mask,seq;
     unsigned mode,valid,armed,fault,result,state,rc,master,ready,s1;
     int stick[2];
+    unsigned keys;int mouse[3];
     unsigned z_mode;int level_raw,level_error_raw;unsigned s2,fold_pitch_target,open_pitch_target,prep_pitch_target,unfold_allowed,parallel_motion;
 } Status;
 static Feedback feedback[2];
@@ -231,7 +232,19 @@ void Sentry_Control(float dt)
         automatic_request=sentry_remote.s2==2?-1.0f:
             sentry_remote.s2==3 && SENTRY_SEQ_UNFOLD_ALLOWED?1.0f:0.0f;
     }
+    /* Panel keys share the physical switch/watchdog gates. A/D are held
+     * sequence requests: release or a stale panel heartbeat cancels to hold. */
+    static int key_ready,key_active;
+    uint16_t keys=SentryRemote_Keys(now);
+    if(!master){key_ready=0;key_active=0;}
+    else if(!(sentry_remote.keys&15U))key_ready=1;
+    if(master && key_ready && keys){
+        automatic_request=((keys&8U)!=0)-((keys&4U)!=0);
+        key_active=1;
+    } else if(key_active){automatic_request=0;key_active=0;}
     float stick[2]={automatic_request,SentryRemote_Stick(1)};
+    if(master && key_ready && keys && stick[1]==0)
+        stick[1]=0.35f*(float)(((keys&1U)!=0)-((keys&2U)!=0));
     int timing=isfinite(dt)&&dt>0&&dt<=0.020f;
     if(!rc) {if(armed) fault=1;armed=0;}
     if(!timing) {if(armed) fault=2;armed=0;}
@@ -308,6 +321,8 @@ void Sentry_Control(float dt)
     status.z_mode=linkage.mode;status.level_raw=(int)lroundf(SENTRY_SEQ_OPEN_PITCH_RAW);
     status.level_error_raw=f[1].m.Pos_int-status.level_raw;
     status.state=!axis[0].active?0:axis[0].settled && now-axis[0].settled>=150U?2:1;
+    status.keys=sentry_remote.keys;
+    for(unsigned i=0;i<3;i++)status.mouse[i]=sentry_remote.mouse[i];
     status.s1=sentry_remote.s1;status.s2=sentry_remote.s2;status.stick[0]=(int)(stick[0]*1000);status.stick[1]=(int)(stick[1]*1000);
     for(unsigned i=0;i<2;i++) {
         status.pos[i]=(int)(f[i].m.Position*1000);status.raw[i]=f[i].m.Pos_int;
@@ -325,9 +340,9 @@ void Sentry_Background(void)
     taskENTER_CRITICAL();s=status;taskEXIT_CRITICAL();
     int n=snprintf(output,sizeof(output),
       "SENTRY seq=%lu result=%u cal=%u valid=%u mask=%lu ready=%u rc=%u master=%u armed=%u fault=%u fold_state=%u "
-      "fold_raw=%d fold_mrad=%d fold_goal=%d fold_age=%lu pitch_raw=%d pitch_mrad=%d pitch_goal=%d pitch_age=%lu ends=%d,%d,%d,%d end_raw=%d,%d,%d,%d err=%d,%d temp=%d,%d s1=%u sticks=%d,%d z_mode=%u level_raw=%d level_err=%d s2=%u fold_pitch_target=%u open_pitch_target=%u prep_pitch_target=%u unfold_allowed=%u parallel_motion=%u\r\n",
+      "fold_raw=%d fold_mrad=%d fold_goal=%d fold_age=%lu pitch_raw=%d pitch_mrad=%d pitch_goal=%d pitch_age=%lu ends=%d,%d,%d,%d end_raw=%d,%d,%d,%d err=%d,%d temp=%d,%d s1=%u sticks=%d,%d z_mode=%u level_raw=%d level_err=%d s2=%u fold_pitch_target=%u open_pitch_target=%u prep_pitch_target=%u unfold_allowed=%u parallel_motion=%u keys=%u mouse=%d,%d,%d\r\n",
       (unsigned long)s.seq,s.result,s.mode,s.valid,(unsigned long)s.mask,s.ready,s.rc,s.master,s.armed,s.fault,s.state,
       s.raw[0],s.pos[0],s.goal[0],(unsigned long)s.age[0],s.raw[1],s.pos[1],s.goal[1],(unsigned long)s.age[1],
-      s.end[0],s.end[1],s.end[2],s.end[3],s.endraw[0],s.endraw[1],s.endraw[2],s.endraw[3],s.err[0],s.err[1],s.temp[0],s.temp[1],s.s1,s.stick[0],s.stick[1],s.z_mode,s.level_raw,s.level_error_raw,s.s2,s.fold_pitch_target,s.open_pitch_target,s.prep_pitch_target,s.unfold_allowed,s.parallel_motion);
+      s.end[0],s.end[1],s.end[2],s.end[3],s.endraw[0],s.endraw[1],s.endraw[2],s.endraw[3],s.err[0],s.err[1],s.temp[0],s.temp[1],s.s1,s.stick[0],s.stick[1],s.z_mode,s.level_raw,s.level_error_raw,s.s2,s.fold_pitch_target,s.open_pitch_target,s.prep_pitch_target,s.unfold_allowed,s.parallel_motion,s.keys,s.mouse[0],s.mouse[1],s.mouse[2]);
     if(n>0 && n<(int)sizeof(output) && CDC_Transmit_FS((uint8_t *)output,(uint16_t)n)==USBD_OK) last=now;
 }

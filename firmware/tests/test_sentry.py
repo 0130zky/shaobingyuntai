@@ -59,6 +59,16 @@ static void feed(unsigned i,unsigned raw,unsigned state){
  sample=(DM4310_MotorMeasure_t){.Position=RawPosition(raw),.Velocity=state==1?axis[i].v:0,.ERR=(uint8_t)state,.Pos_int=(int)raw};
  uint8_t d[8]={(uint8_t)esc[i]};Sentry_Rx(mst[i],d,8);
 }
+static void panel(unsigned keys,unsigned pulse){
+ uint8_t frame[18]={0};
+ for(unsigned i=0;i<4;i++)for(unsigned b=0;b<11;b++)if((i==1||i==3?sentry_remote.channel[i]:1024)&(1U<<b)){
+  unsigned bit=i*11+b;frame[bit/8]|=(uint8_t)(1U<<(bit%8));
+ }
+ frame[5]|=(uint8_t)((sentry_remote.s1<<6)|(sentry_remote.s2<<4));
+ unsigned mask=keys?(keys|0x4000U|(pulse<<15)):0;
+ frame[14]=(uint8_t)mask;frame[15]=(uint8_t)(mask>>8);
+ assert(SentryRemote_Decode(frame,tick));
+}
 static unsigned midpitch(void){return 29763;}
 static void step(int s1,int left,int right,unsigned r0,unsigned r1,unsigned state){
  tick+=3;remote(s1,left,right);feed(0,r0,state);feed(1,r1,state);Sentry_Control(.003f);
@@ -117,6 +127,24 @@ int main(void){
   if(f<before_f&&p>before_p)overlap=1;
  }
  assert(!fault&&overlap&&linkage.mode==Z_OPEN&&abs((int)p-34370)<2);
+ // W/S share Pitch jog, A/D are held sequence requests; neutral cancels.
+ panel(1,0);panel(1,1);follow(1684,1024,&f,&p);
+ assert(status.stick[1]==350);
+ panel(0,0);follow(1684,1024,&f,&p);assert(status.stick[1]==0);
+ panel(4,0);panel(4,1);follow(1684,1024,&f,&p);
+ assert(automatic_request==-1&&linkage.mode==Z_LINKED);
+ panel(0,0);follow(1684,1024,&f,&p);
+ assert(automatic_request==0&&linkage.mode==Z_HOLD);
+ panel(8,0);panel(8,1);follow(1684,1024,&f,&p);
+ assert(automatic_request==1&&linkage.mode==Z_UNFOLDING);
+ // Receiver still fresh, but frozen panel heartbeat cancels within 250 ms.
+ for(int i=0;i<90;i++)follow(1684,1024,&f,&p);
+ assert(automatic_request==0&&linkage.mode==Z_HOLD);
+ panel(0,0);
+ // Holding a key through S1 re-enable requires neutral before acceptance.
+ step(1,1684,1024,f,p,0);panel(4,0);panel(4,1);
+ step(2,1684,1024,f,p,1);assert(automatic_request==0);
+ panel(0,0);follow(1684,1024,&f,&p);
  int prior=motion_count;
  // S2 up disables; up -> down with S1 kept enabled still starts closing.
  tick+=3;remote(2,1024,1024);sentry_remote.s2=1;feed(0,f,0);feed(1,p,0);
@@ -141,7 +169,7 @@ int main(void){
  rearm();for(int i=0;i<100;i++){tick+=3;remote(2,1024,1024);feed(0,42000,0);feed(1,midpitch(),1);Sentry_Control(.003f);}
  assert(axis[0].active&&axis[1].active&&!fault);
 #else
- assert(tx_count==0&&enable_count==0);(void)follow;
+ assert(tx_count==0&&enable_count==0);(void)follow;(void)panel;
 #endif
  step(1,1024,1024,42000,midpitch(),0);cmd("CAL BEGIN\n");assert(calibration&&!valid);
  tick+=250;remote(1,1024,1024);

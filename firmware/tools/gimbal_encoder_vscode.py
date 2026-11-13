@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""VS Code 折叠云台编码器上位机后台（只读）。
+"""VS Code 折叠云台编码器上位机后台。
 
 数据源是 DM-MC02 的 USB CDC：Sentry_Background() 每 100ms 输出一行
 
     SENTRY seq=... fold_raw=... fold_mrad=... pitch_raw=... pitch_mrad=...
 
-本进程独占串口，只解析状态行，不向板端发送任何命令。VS Code 扩展通过
+板端串口只解析状态行；独立 DT7 串口显式连接后发送键盘中转报文。VS Code 扩展通过
 stdin/stdout 的 JSON RPC 读取 state/connect/disconnect/ports。
 """
 import argparse
@@ -21,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from serial_transport import SerialPort, available_ports
+from dt7_control import DT7Control
 
 BAUD = 115200
 RAW_MAX = 65535
@@ -35,7 +36,7 @@ JOB_TAIL = 240
 RECONNECT_S = 15.0
 PHASE_NAMES = {'build': '编译', 'flash': '烧录', 'done': '结束'}
 SCALAR_FIELDS = (
-    'seq', 'result', 'cal', 'valid', 'mask', 'ready', 'rc', 'master', 'armed',
+    'keys', 'seq', 'result', 'cal', 'valid', 'mask', 'ready', 'rc', 'master', 'armed',
     'fault', 'fold_state', 'fold_raw', 'fold_mrad', 'fold_goal', 'fold_age',
     'pitch_raw', 'pitch_mrad', 'pitch_goal', 'pitch_age', 's1', 's2', 'z_mode',
     'level_raw', 'level_err', 'fold_pitch_target', 'open_pitch_target',
@@ -126,6 +127,8 @@ def parse_status_line(line):
             'ends': quads.get('ends'),
             'sticks': pairs_parsed.get('sticks'),
         }
+        if 'mouse' in pairs:
+            sample['mouse'] = _ints(pairs['mouse'], 3)
         sample.update(values)
         return sample
     except (KeyError, ValueError):
@@ -254,6 +257,7 @@ class EncoderSession:
         self.received = 0
         self.invalid = 0
         self.job = None
+        self.dt7 = DT7Control()
         self._ports = []
         self.refresh_ports()
         if auto_port:
@@ -270,10 +274,13 @@ class EncoderSession:
         self.disconnect()
         path = (path or '').strip()
         if not path:
-            candidates = [item for item in self._ports if _port_rank(item)[0] < 5]
+            candidates = [item for item in self._ports if _port_rank(item)[0] < 5
+                          and '0001A0000000' not in item and '507211265703' not in item]
             path = candidates[0] if candidates else ''
         if not path:
             raise ValueError('未找到 USB 串口；连接开发板后点“刷新”')
+        if path == self.dt7.snapshot()['port']:
+            raise ValueError('此串口正用于 DT7 控制')
         serial_port = SerialPort(path, BAUD)
         stop = threading.Event()
         with self._lock:
@@ -364,7 +371,8 @@ class EncoderSession:
         deadline = time.time() + timeout
         while time.time() < deadline:
             for path in self.refresh_ports():
-                if _port_rank(path)[0] >= 5:
+                if (_port_rank(path)[0] >= 5 or '0001A0000000' in path
+                        or '507211265703' in path or path == self.dt7.snapshot()['port']):
                     continue
                 try:
                     self.connect(path)
@@ -385,6 +393,7 @@ class EncoderSession:
             raise ValueError('已有编译/烧录任务在运行，先取消或等待结束')
         if not BUILD_SCRIPT.exists():
             raise ValueError(f'找不到 {BUILD_SCRIPT}')
+        self.dt7.update(0) if self.dt7.snapshot()['connected'] else None
         self.job = BuildJob(mode, self, dry_run=bool(dry_run))
         return self.state()
 
@@ -413,10 +422,25 @@ class EncoderSession:
                 'ports': list(self._ports),
                 'config': {'raw_max': RAW_MAX, 'p_max_rad': P_MAX_RAD,
                            'stale_ms': 250},
+                'dt7': self.dt7.snapshot(),
                 'job': None if self.job is None else self.job.snapshot(),
             }
 
     def dispatch(self, method, params):
+        if method == 'dt7_connect':
+            port = params.get('port', '')
+            if port == self.port:
+                raise ValueError('此串口正用于板端遥测')
+            self.dt7.connect(port)
+            return self.state()
+        if method == 'dt7_disconnect':
+            self.dt7.disconnect()
+            return self.state()
+        if method == 'dt7_input':
+            if self.job is not None and self.job.running:
+                raise ValueError('编译烧录期间暂停控制')
+            self.dt7.update(params.get('keys', 0))
+            return self.dt7.snapshot()
         if method == 'state':
             return self.state()
         if method == 'ports':
@@ -439,15 +463,19 @@ def main():
     parser.add_argument('--port', default='', help='自动连接的串口；留空则选择第一个 USB 串口')
     args = parser.parse_args()
     session = EncoderSession(args.port)
-    for line in sys.stdin:
-        request = {}
-        try:
-            request = json.loads(line)
-            result = session.dispatch(request['method'], request.get('params', {}))
-            response = {'id': request.get('id'), 'result': result}
-        except Exception as exc:  # noqa: BLE001 - 边界必须把错误送回扩展
-            response = {'id': request.get('id'), 'error': str(exc)}
-        print(json.dumps(response, ensure_ascii=False, allow_nan=False), flush=True)
+    try:
+        for line in sys.stdin:
+            request = {}
+            try:
+                request = json.loads(line)
+                result = session.dispatch(request['method'], request.get('params', {}))
+                response = {'id': request.get('id'), 'result': result}
+            except Exception as exc:  # noqa: BLE001 - 边界必须把错误送回扩展
+                response = {'id': request.get('id'), 'error': str(exc)}
+            print(json.dumps(response, ensure_ascii=False, allow_nan=False), flush=True)
+    finally:
+        session.dt7.disconnect()
+        session.disconnect()
 
 
 if __name__ == '__main__':

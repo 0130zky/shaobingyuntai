@@ -164,6 +164,7 @@ function render() {
   renderAxis(PITCH, latest?.pitch, hostAge);
   renderStatus();
   renderJob(state.job);
+  renderDT7();
   draw();
 }
 
@@ -380,9 +381,9 @@ $('refresh').onclick = async () => {
   } catch (e) { error(e.message); }
 };
 $('port').onchange = () => { if (state?.connected) action('connect', {port: $('port').value}); };
-$('buildBtn').onclick = () => action('build');
-$('flashBtn').onclick = () => action('flash');
-$('programBtn').onclick = () => action('program');
+$('buildBtn').onclick = () => { releaseKeys(); action('build'); };
+$('flashBtn').onclick = () => { releaseKeys(); action('flash'); };
+$('programBtn').onclick = () => { releaseKeys(); action('program'); };
 $('cancelBtn').onclick = () => action('cancel');
 $('chart').addEventListener('mousemove', showTooltip);
 $('chart').addEventListener('mouseleave', hideTooltip);
@@ -390,4 +391,65 @@ window.addEventListener('resize', draw);
 new MutationObserver(() => { if (state) draw(); })
   .observe(document.body, {attributes: true, attributeFilter: ['class']});
 
+let heldKeys = 0, inputPending = false;
+function renderDT7() {
+  const relay = state.dt7 || {}, select = $('dt7Port');
+  if (select.dataset.signature !== (state.ports || []).join('|')) {
+    const previous = select.value;
+    select.replaceChildren();
+    for (const port of state.ports || []) {
+      const option = document.createElement('option'); option.value = option.textContent = port; select.append(option);
+    }
+    select.value = relay.port || previous || (state.ports || []).find(p => p.includes('0001A0000000')) || '';
+    select.dataset.signature = (state.ports || []).join('|');
+  }
+  select.disabled = !!relay.connected;
+  $('dt7Toggle').textContent = relay.connected ? '断开 DT7' : '连接 DT7';
+  const sample = state.latest;
+  $('dt7State').textContent = relay.error || (relay.connected
+    ? `已连接 ${relay.port} · 921600 · 已发 ${relay.frames} 帧 · 按键 0x${(relay.keys || 0).toString(16)}` : 'DT7 未连接')
+    + ` · 板端键盘 ${sample?.keys == null ? '等待遥测' : '0x' + sample.keys.toString(16)} · 鼠标 ${sample?.mouse?.join(', ') || '—'}`;
+  if (!relay.connected || state.job?.running) heldKeys = 0;
+  for (const button of document.querySelectorAll('[data-key]')) {
+    button.disabled = !relay.connected || !!state.job?.running;
+    button.classList.toggle('primary', !!(heldKeys & Number(button.dataset.key)));
+  }
+}
+async function sendKeys() {
+  if (inputPending || !state?.dt7?.connected || state.job?.running) return;
+  inputPending = true;
+  try { await call('dt7_input', {keys: heldKeys}); }
+  catch (e) { heldKeys = 0; error(e.message); }
+  finally { inputPending = false; }
+}
+function releaseKeys() {
+  heldKeys = 0;
+  if (state?.dt7?.connected) call('dt7_input', {keys: 0}).catch(e => error(e.message));
+}
+$('dt7Toggle').onclick = () => {
+  releaseKeys(); action(state?.dt7?.connected ? 'dt7_disconnect' : 'dt7_connect', {port: $('dt7Port').value});
+};
+$('dt7Stop').onclick = releaseKeys;
+const keyBits = {KeyW: 1, KeyS: 2, KeyA: 4, KeyD: 8};
+$('keyPad').addEventListener('keydown', e => {
+  const bit = keyBits[e.code];
+  if (!bit || !state?.dt7?.connected || state.job?.running) return;
+  e.preventDefault(); heldKeys |= bit; sendKeys();
+});
+window.addEventListener('keyup', e => {
+  const bit = keyBits[e.code]; if (bit) { heldKeys &= ~bit; sendKeys(); }
+});
+for (const button of document.querySelectorAll('[data-key]')) {
+  button.addEventListener('pointerdown', e => {
+    e.preventDefault(); button.focus(); button.setPointerCapture(e.pointerId);
+    heldKeys |= Number(button.dataset.key); sendKeys();
+  });
+  for (const event of ['pointerup', 'pointercancel', 'lostpointercapture']) button.addEventListener(event, () => {
+    heldKeys &= ~Number(button.dataset.key); sendKeys();
+  });
+}
+$('keyPad').addEventListener('focusout', e => { if (!$('keyPad').contains(e.relatedTarget)) releaseKeys(); });
+window.addEventListener('blur', releaseKeys);
+document.addEventListener('visibilitychange', () => { if (document.hidden) releaseKeys(); });
+setInterval(() => { if (!document.hidden) sendKeys(); }, 75);
 poll();
