@@ -1,0 +1,19 @@
+{
+  "target": "DM-MC02 / STM32H723",
+  "level_points": [
+    38800.0,
+    32744.0,
+    40763.0,
+    32125.0,
+    45622.0,
+    29762.0
+  ],
+  "pitch_low_raw": 29762,
+  "elf_sha256": "dd9e966feb10171149731e3f6778312108ddf0a609791501316e42bc7e3f6d10",
+  "bin_sha256": "d63c3ab496cfbea04de75639444db3b265c5db486bec52e446084a909ff6440d",
+  "program_verified_reset": true,
+  "dynamic_motion_verified": false,
+  "level_tolerance_counts": 64,
+  "level_tolerance_reason": "observed static bias 41 counts caused old 24 count alignment timeout",
+  "final_remote_can_online": false
+}

@@ -1,0 +1,88 @@
+{
+  "samples": [
+    {
+      "raw": [
+        38890,
+        32813
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        3,
+        3
+      ],
+      "valid": 1,
+      "fault": 0,
+      "master": 0,
+      "s1": 1,
+      "s2": 1,
+      "fold_pitch_target": 29763,
+      "open_pitch_target": 34370,
+      "prep_pitch_target": 31401,
+      "unfold_allowed": 1
+    },
+    {
+      "raw": [
+        38890,
+        32813
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        6,
+        6
+      ],
+      "valid": 1,
+      "fault": 0,
+      "master": 0,
+      "s1": 1,
+      "s2": 1,
+      "fold_pitch_target": 29763,
+      "open_pitch_target": 34370,
+      "prep_pitch_target": 31401,
+      "unfold_allowed": 1
+    },
+    {
+      "raw": [
+        38890,
+        32813
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        6,
+        6
+      ],
+      "valid": 1,
+      "fault": 0,
+      "master": 0,
+      "s1": 1,
+      "s2": 1,
+      "fold_pitch_target": 29763,
+      "open_pitch_target": 34370,
+      "prep_pitch_target": 31401,
+      "unfold_allowed": 1
+    }
+  ],
+  "feedback_counts": [
+    [
+      15,
+      23
+    ],
+    [
+      25,
+      37
+    ],
+    [
+      35,
+      51
+    ]
+  ],
+  "boot_beeps": 2
+}

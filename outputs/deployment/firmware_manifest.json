@@ -1,0 +1,26 @@
+{
+  "target": "DM-MC02 STM32H723VGT6",
+  "elf": "firmware/build/SentryH7/sentry_dm_mc02.elf",
+  "elf_sha256": "d2d0abe8ed8efa7884a777ba06c4187b30c3f9878234fdf3c787c71c1eee430e",
+  "bin_sha256": "5b2c936b0cd3054597b4d71701b47c68ce52c3e00dd958d54e05908b71fe12b0",
+  "raw_limits": {
+    "fold": [
+      38793,
+      45659
+    ],
+    "pitch": [
+      33223,
+      36011
+    ]
+  },
+  "motor_ids": {
+    "fold": [
+      1,
+      17
+    ],
+    "pitch": [
+      2,
+      0
+    ]
+  }
+}

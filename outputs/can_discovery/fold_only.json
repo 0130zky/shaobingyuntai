@@ -1,0 +1,19 @@
+{
+  "physical_axis": "Fold only, confirmed by user",
+  "meta": {
+    "magic": 1347571522,
+    "state": 1,
+    "rate": 250000,
+    "candidate": 1089,
+    "pass": 2,
+    "rx": 0,
+    "tx": 6535,
+    "fail": 3834,
+    "psr": 1903,
+    "ecr": 65280,
+    "count": 0,
+    "done": 0,
+    "last_id": 0
+  },
+  "motors": []
+}

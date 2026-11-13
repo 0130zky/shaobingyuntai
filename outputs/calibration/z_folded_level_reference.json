@@ -1,0 +1,449 @@
+{
+  "captured_at": "2026-11-12T20:48:08.163505+08:00",
+  "pose": "fully_folded_and_gimbal_level",
+  "level_confirmed_by_user": true,
+  "reference": {
+    "fold": {
+      "raw_encoder": 45622,
+      "raw_min": 45622,
+      "raw_max": 45623,
+      "sample_count": 12,
+      "motor_position_rad": 4.903676986694336,
+      "motor_encoder_angle_deg": 280.95999543301457
+    },
+    "pitch": {
+      "raw_encoder": 31439,
+      "raw_min": 31439,
+      "raw_max": 31439,
+      "sample_count": 12,
+      "motor_position_rad": -0.5067901611328125,
+      "motor_encoder_angle_deg": -29.036937331665087
+    }
+  },
+  "samples": [
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.021978378295898438,
+        "drive_status": 0,
+        "rx_tick": 525452,
+        "rx_count": 43180,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525452,
+        "rx_count": 52898,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45623,
+        "motor_position_rad": 4.904058456420898,
+        "motor_encoder_angle_deg": 280.9818520383586,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525578,
+        "rx_count": 43186,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525581,
+        "rx_count": 52907,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45623,
+        "motor_position_rad": 4.904058456420898,
+        "motor_encoder_angle_deg": 280.9818520383586,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525683,
+        "rx_count": 43191,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525704,
+        "rx_count": 52915,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.021978378295898438,
+        "drive_status": 0,
+        "rx_tick": 525809,
+        "rx_count": 43197,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525809,
+        "rx_count": 52922,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525935,
+        "rx_count": 43203,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 525935,
+        "rx_count": 52930,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.021978378295898438,
+        "drive_status": 0,
+        "rx_tick": 526040,
+        "rx_count": 43208,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526040,
+        "rx_count": 52937,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526166,
+        "rx_count": 43214,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526175,
+        "rx_count": 52946,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.03663063049316406,
+        "drive_status": 0,
+        "rx_tick": 526292,
+        "rx_count": 43220,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526292,
+        "rx_count": 52954,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526397,
+        "rx_count": 43225,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526397,
+        "rx_count": 52962,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45623,
+        "motor_position_rad": 4.904058456420898,
+        "motor_encoder_angle_deg": 280.9818520383586,
+        "velocity_rad_s": 0.021978378295898438,
+        "drive_status": 0,
+        "rx_tick": 526523,
+        "rx_count": 43231,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526523,
+        "rx_count": 52969,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45623,
+        "motor_position_rad": 4.904058456420898,
+        "motor_encoder_angle_deg": 280.9818520383586,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526649,
+        "rx_count": 43237,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526649,
+        "rx_count": 52977,
+        "seen": 1
+      }
+    },
+    {
+      "fold": {
+        "raw": 45622,
+        "motor_position_rad": 4.903676986694336,
+        "motor_encoder_angle_deg": 280.95999543301457,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526754,
+        "rx_count": 43242,
+        "seen": 1
+      },
+      "pitch": {
+        "raw": 31439,
+        "motor_position_rad": -0.5067901611328125,
+        "motor_encoder_angle_deg": -29.036937331665087,
+        "velocity_rad_s": -0.0073261260986328125,
+        "drive_status": 0,
+        "rx_tick": 526769,
+        "rx_count": 52985,
+        "seen": 1
+      }
+    }
+  ],
+  "statuses": [
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        21,
+        21
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        12,
+        9
+      ],
+      "raw": [
+        45623,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        6,
+        6
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        18,
+        18
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        12,
+        12
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        3,
+        3
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        18,
+        9
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        12,
+        12
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        6,
+        6
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        21,
+        21
+      ],
+      "raw": [
+        45623,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        12,
+        12
+      ],
+      "raw": [
+        45623,
+        31439
+      ]
+    },
+    {
+      "s1": 1,
+      "master": 0,
+      "fault": 0,
+      "ages_ms": [
+        3,
+        3
+      ],
+      "raw": [
+        45622,
+        31439
+      ]
+    }
+  ],
+  "applied_to_firmware": false,
+  "note": "Joint horizontal reference only; no actuator motion, limit update or firmware write."
+}

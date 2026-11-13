@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "SENTRY_FOLD_SPEED": 1600.0,
+    "SENTRY_PITCH_SPEED": 200.0,
+    "SENTRY_FOLD_ACCEL": 400.0,
+    "SENTRY_PITCH_ACCEL": 400.0,
+    "SENTRY_STICK_DEADZONE": 0.05
+  },
+  "elf_sha256": "6f2aa8b6886641fa615cd0d3522dc1e3d66bd62fb34f1e31f01b88d0f4233a79",
+  "bin_sha256": "737612747edfb93480a94531ff105c6c08b546ce62c90679020ced24858d9bda",
+  "parallel_motion": true,
+  "manual_stick_proportional": true,
+  "independent_axis_acceleration": true,
+  "verified_reset": true,
+  "motion_verified": false
+}

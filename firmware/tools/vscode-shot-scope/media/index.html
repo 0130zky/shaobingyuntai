@@ -1,0 +1,28 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+<link rel="stylesheet" href="{{style}}"><title>发弹监测</title></head><body>
+<header><div><h1>三摩擦轮 · 发弹监测</h1><span id="connection">正在读取后台采集…</span></div><div class="buttons"><button id="live">实时监测</button><button id="replay">打开历史CSV</button><button id="export">导出逐轮统计</button></div></header>
+<section class="calibration pitch-encoder"><strong>Pitch 编码器（未标定原始坐标）</strong><span id="pitchEncoder">—</span><span id="pitchFeedback">等待板端编码反馈…</span></section>
+<section class="calibration"><strong>Pitch 手动限位标定</strong><button id="pitchLower">记录下限 −15°</button><button id="pitchUpper">记录上限 +42.75°</button><span id="pitchStatus">关闭 CH6，手动移至限位并停稳；先下限后上限。结果用于预览。</span></section>
+<section class="calibration"><label>初始偏移（顺时针°） <input id="phase" type="number" min="-10" max="10" step="0.1" value="1.0"></label><button id="apply">应用偏移</button><span id="dialAngle">槽位角度（顺时针+） —</span><button id="alignDial">用当前角度作为槽位</button><span id="phaseStatus">手动把弹槽拨到进弹口，点“用当前角度作为槽位”，再重新使能。</span></section>
+<div id="error" role="alert" hidden></div>
+<section class="cards" id="readout"></section>
+<nav><button id="modeLive">实时三轮叠加</button><button id="modeShot" class="active">单发三轮变化</button><span class="legend"><b class="wheel0">━ 12点轮</b><b class="wheel1">━ 4点轮</b><b class="wheel2">━ 8点轮</b></span></nav>
+<main><aside><h2>逐发记录</h2><p>点击一发查看；未选择时跟随最新一发。</p><div class="scroll"><table><thead><tr><th>记录号</th><th>弹速 m/s</th><th>判定</th></tr></thead><tbody id="shotList"></tbody></table></div><button id="latest">跟随最新一发</button><p id="source"></p></aside>
+<article><h2 id="detailTitle">等待发弹</h2><div class="scroll"><table id="metrics"><thead><tr><th>轮位</th><th>发前rpm</th><th>最低rpm</th><th>掉速rpm</th><th>掉速%</th><th>发后rpm</th><th>发后Δ</th><th>恢复ms</th><th>超调rpm</th></tr></thead><tbody id="metricRows"></tbody></table></div>
+<div class="controls"><label>显示范围 <select id="zoom"><option value="full">完整过程 −300～600ms</option><option value="contact">过弹细节 −20～80ms</option><option value="recover">恢复过程 0～200ms</option></select></label><label><input id="command" type="checkbox" checked> 叠加电流指令（虚线）</label></div>
+<p class="hint" id="definitions">基线：掉速前300～50ms中位数；发后：起点后400～500ms均值；恢复：从各轮最低点起，回到基线±100rpm并保持50ms。零点为遥测掉速阈值，并非接触传感器。</p>
+<div class="chart"><h3>三轮实际转速 <small>rpm</small></h3><canvas id="rpm"></canvas></div>
+<div class="chart" id="deltaSection"><h3>相对发弹前基线的转速变化 <small>Δrpm</small></h3><canvas id="delta"></canvas></div>
+<div class="chart"><h3>三轮电流反馈／指令 <small>原始值 · 实线反馈／虚线指令</small></h3><canvas id="current"></canvas></div>
+<details open><summary>控制诊断（新增固件提供）</summary>
+<p id="diagnosticStatus" class="hint">等待诊断帧</p>
+<div class="scroll"><table><thead><tr><th>轮位</th><th>反馈年龄ms</th><th>同步补偿rpm</th><th>PID参考rpm</th><th>接近限幅拍数/窗口拍数</th></tr></thead><tbody id="diagnosticRows"></tbody></table></div>
+<div class="chart"><h3>三轮反馈年龄 <small>ms · 控制计算时快照</small></h3><canvas id="feedbackAge"></canvas></div>
+<div class="chart"><h3>三轮同步补偿 <small>rpm · 正值为提速</small></h3><canvas id="syncTrim"></canvas></div>
+<div class="chart"><h3>PID时序 <small>µs · 橙色周期／绿色运行耗时／蓝色窗口最大周期</small></h3><canvas id="pidTiming"></canvas></div>
+<p class="hint">诊断约20ms一帧，曲线在相邻诊断间保持最近观测值；周期峰值、补偿生效拍数和≥98%电流指令拍数逐控制拍累计。诊断缺失显示空白，不能据此认定未限幅。单发模式显示该发窗口，表格显示当前记录末尾的诊断。</p>
+</details>
+<p class="hint" id="axisLabel">横轴：相对掉速起点 / ms</p></article></main>
+<script nonce="{{nonce}}" src="{{script}}"></script></body></html>

@@ -1,0 +1,32 @@
+{
+  "name": "robot_template-shot-scope",
+  "displayName": "robot_template 发弹监测",
+  "description": "VS Code内显示三摩擦轮轮速、电流叠加曲线与逐发统计。",
+  "version": "0.2.9",
+  "publisher": "local-robot_template",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onUri",
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "robot_templateScope.open",
+        "title": "robot_template: 打开发弹监测"
+      }
+    ]
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false
+    }
+  },
+  "license": "UNLICENSED"
+}

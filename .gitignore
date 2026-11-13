@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Build outputs (CubeMX / CMake / STM32CubeIDE)
+build/
+Debug/
+Release/
+*.bin
+*.elf
+*.hex
+*.map
+*.su
+*.obj
+
+# Logs
+# 后两条是 fri_ctl_gui.py 轮转/归档出来的: fri_ctl.log.1 / .2 / .3 和 *.gz
+*.log
+*.log.[0-9]*
+*.log.*.gz
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE local settings
+.vscode/
+
+# Local host-tool environments
+.venv/

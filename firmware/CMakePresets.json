@@ -1,0 +1,145 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "toolchainFile": "${sourceDir}/cmake/gcc-arm-none-eabi.cmake",
+            "cacheVariables": {}
+        },
+        {
+            "name": "Shooter",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Shooter",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "Bench",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Bench",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "Calibration",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Calibration",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "Debug",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Shooter",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "Release",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Shooter",
+                "CMAKE_BUILD_TYPE": "Release",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "DM4310",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Shooter",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "DM4310Calib",
+            "inherits": "default",
+            "cacheVariables": {
+                "FIRMWARE_PROFILE": "Calibration",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ROBOT": "example"
+            }
+        },
+        {
+            "name": "Minimal",
+            "inherits": "default",
+            "cacheVariables": {
+                "ROBOT": "minimal",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "SentryF407",
+            "inherits": "default",
+            "cacheVariables": {
+                "ROBOT": "sentry",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Sentry",
+            "inherits": "default",
+            "binaryDir": "${sourceDir}/build/SentryH7",
+            "toolchainFile": "${sourceDir}/cmake/gcc-arm-h723.cmake",
+            "cacheVariables": {
+                "BOARD": "DM_MC02",
+                "ROBOT": "sentry",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Shooter",
+            "configurePreset": "Shooter"
+        },
+        {
+            "name": "Bench",
+            "configurePreset": "Bench"
+        },
+        {
+            "name": "Calibration",
+            "configurePreset": "Calibration"
+        },
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        },
+        {
+            "name": "DM4310",
+            "configurePreset": "DM4310"
+        },
+        {
+            "name": "DM4310Calib",
+            "configurePreset": "DM4310Calib"
+        },
+        {
+            "name": "Minimal",
+            "configurePreset": "Minimal"
+        },
+        {
+            "name": "Sentry",
+            "configurePreset": "Sentry"
+        },
+        {
+            "name": "SentryF407",
+            "configurePreset": "SentryF407"
+        }
+    ]
+}

@@ -1,0 +1,197 @@
+[
+  {
+    "raw": [
+      45620,
+      31456
+    ],
+    "goal_mrad": [
+      4902,
+      -506
+    ],
+    "drive": [
+      0,
+      1
+    ],
+    "ages": [
+      3,
+      3
+    ],
+    "fault": 0,
+    "master": 1,
+    "s1": 2,
+    "sticks": [
+      0,
+      0
+    ],
+    "z_mode": 4,
+    "level_raw": 31440,
+    "level_error": 16,
+    "trajectory_fold": [
+      45620.0,
+      0.0,
+      45620.0
+    ],
+    "trajectory_pitch": [
+      31439.931640625,
+      0.0,
+      31439.931640625
+    ],
+    "pitch_motor_rad": -0.50030517578125
+  },
+  {
+    "raw": [
+      45620,
+      31456
+    ],
+    "goal_mrad": [
+      4902,
+      -506
+    ],
+    "drive": [
+      0,
+      1
+    ],
+    "ages": [
+      3,
+      3
+    ],
+    "fault": 0,
+    "master": 1,
+    "s1": 2,
+    "sticks": [
+      0,
+      0
+    ],
+    "z_mode": 4,
+    "level_raw": 31439,
+    "level_error": 17,
+    "trajectory_fold": [
+      45620.0,
+      0.0,
+      45620.0
+    ],
+    "trajectory_pitch": [
+      31439.919921875,
+      -3.932143449783325,
+      31439.931640625
+    ],
+    "pitch_motor_rad": -0.50030517578125
+  },
+  {
+    "raw": [
+      45620,
+      31456
+    ],
+    "goal_mrad": [
+      4902,
+      -506
+    ],
+    "drive": [
+      0,
+      1
+    ],
+    "ages": [
+      3,
+      3
+    ],
+    "fault": 0,
+    "master": 1,
+    "s1": 2,
+    "sticks": [
+      0,
+      0
+    ],
+    "z_mode": 4,
+    "level_raw": 31440,
+    "level_error": 16,
+    "trajectory_fold": [
+      45620.0,
+      0.0,
+      45620.0
+    ],
+    "trajectory_pitch": [
+      31439.931640625,
+      0.0,
+      31439.931640625
+    ],
+    "pitch_motor_rad": -0.50030517578125
+  },
+  {
+    "raw": [
+      45620,
+      31456
+    ],
+    "goal_mrad": [
+      4902,
+      -506
+    ],
+    "drive": [
+      0,
+      1
+    ],
+    "ages": [
+      3,
+      3
+    ],
+    "fault": 0,
+    "master": 1,
+    "s1": 2,
+    "sticks": [
+      0,
+      0
+    ],
+    "z_mode": 4,
+    "level_raw": 31440,
+    "level_error": 16,
+    "trajectory_fold": [
+      45620.0,
+      0.0,
+      45620.0
+    ],
+    "trajectory_pitch": [
+      31439.931640625,
+      0.0,
+      31439.931640625
+    ],
+    "pitch_motor_rad": -0.50030517578125
+  },
+  {
+    "raw": [
+      45620,
+      31456
+    ],
+    "goal_mrad": [
+      4902,
+      -506
+    ],
+    "drive": [
+      0,
+      1
+    ],
+    "ages": [
+      3,
+      3
+    ],
+    "fault": 0,
+    "master": 1,
+    "s1": 2,
+    "sticks": [
+      0,
+      0
+    ],
+    "z_mode": 4,
+    "level_raw": 31440,
+    "level_error": 16,
+    "trajectory_fold": [
+      45620.0,
+      0.0,
+      45620.0
+    ],
+    "trajectory_pitch": [
+      31439.931640625,
+      0.0,
+      31439.931640625
+    ],
+    "pitch_motor_rad": -0.50030517578125
+  }
+]

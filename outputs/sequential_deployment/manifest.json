@@ -1,0 +1,21 @@
+{
+  "target": "DM-MC02 STM32H723",
+  "elf_sha256": "99edd8134cfb1ec73959ebb40730bfc92180ef996e820f78bab7590846b31340",
+  "bin_sha256": "63538158c42d7c473cba40805a8dac663365e19cbf277ba7d627d29242adef59",
+  "fold_limits": [
+    38800,
+    45628
+  ],
+  "pitch_limits": [
+    29762,
+    36039
+  ],
+  "fold_pitch": 31410,
+  "open_pitch": 34391,
+  "arrival_counts": 96,
+  "settle_ms": 100,
+  "phase_timeout_ms": 20000,
+  "boot_beeps": 2,
+  "program_verify_reset": true,
+  "motion_verified": false
+}

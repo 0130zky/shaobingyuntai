@@ -1,0 +1,153 @@
+{
+  "pose": "unfolded_with_pitch_held",
+  "user_confirmed_pose": true,
+  "samples": [
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        9,
+        12
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        21,
+        21
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        9,
+        9
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        18,
+        6
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        6,
+        9
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        18,
+        18
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        3,
+        3
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    },
+    {
+      "fold_raw": 22417,
+      "pitch_raw": 33087,
+      "ages_ms": [
+        12,
+        12
+      ],
+      "drive": [
+        0,
+        0
+      ],
+      "master": 0,
+      "s1": 1
+    }
+  ],
+  "feedback_counts": [
+    [
+      10036,
+      13942
+    ],
+    [
+      10049,
+      13961
+    ],
+    [
+      10063,
+      13980
+    ],
+    [
+      10076,
+      13998
+    ],
+    [
+      10090,
+      14017
+    ],
+    [
+      10103,
+      14036
+    ],
+    [
+      10117,
+      14054
+    ],
+    [
+      10130,
+      14073
+    ]
+  ],
+  "applied_to_firmware": false
+}

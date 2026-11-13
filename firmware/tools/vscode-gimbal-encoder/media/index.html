@@ -1,0 +1,96 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src {{cspSource}}; script-src 'nonce-{{nonce}}';">
+<link rel="stylesheet" href="{{style}}"><title>云台编码器</title></head><body>
+<header>
+  <div>
+    <h1>折叠云台 · DM4310 编码器</h1>
+    <p id="connection" class="secondary">正在启动编码器后台…</p>
+  </div>
+  <div class="controls">
+    <label class="sr-only" for="port">串口</label>
+    <select id="port" title="USB CDC 串口"></select>
+    <button id="refresh" title="重新扫描串口">刷新</button>
+    <button id="toggle">连接</button>
+  </div>
+</header>
+<div id="error" role="alert" hidden></div>
+
+<section class="axes">
+  <article class="axis" id="foldCard">
+    <div class="axis-head">
+      <div><h2>折叠轴</h2><span class="secondary">FOLD · ESC 0x01 / MST 0x11</span></div>
+      <span class="badge" id="foldHealth">等待反馈</span>
+    </div>
+    <p class="hero"><span id="foldRaw">—</span><span class="unit">编码值</span></p>
+    <div class="meter" aria-hidden="true"><div class="meter-fill fold" id="foldMeter"></div></div>
+    <div class="meter-scale secondary"><span>0</span><span>32767</span><span>65535</span></div>
+    <dl>
+      <div><dt>输出角</dt><dd id="foldDeg">—</dd></div>
+      <div><dt>目标</dt><dd id="foldGoal">—</dd></div>
+      <div><dt>误差</dt><dd id="foldError">—</dd></div>
+      <div><dt>反馈年龄</dt><dd id="foldAge">—</dd></div>
+      <div><dt>驱动状态</dt><dd id="foldDrive">—</dd></div>
+      <div><dt>温度</dt><dd id="foldTemp">—</dd></div>
+    </dl>
+  </article>
+
+  <article class="axis" id="pitchCard">
+    <div class="axis-head">
+      <div><h2>Pitch 轴</h2><span class="secondary">PITCH · ESC 0x02 / MST 0x00</span></div>
+      <span class="badge" id="pitchHealth">等待反馈</span>
+    </div>
+    <p class="hero"><span id="pitchRaw">—</span><span class="unit">编码值</span></p>
+    <div class="meter" aria-hidden="true"><div class="meter-fill pitch" id="pitchMeter"></div></div>
+    <div class="meter-scale secondary"><span>0</span><span>32767</span><span>65535</span></div>
+    <dl>
+      <div><dt>输出角</dt><dd id="pitchDeg">—</dd></div>
+      <div><dt>目标</dt><dd id="pitchGoal">—</dd></div>
+      <div><dt>误差</dt><dd id="pitchError">—</dd></div>
+      <div><dt>反馈年龄</dt><dd id="pitchAge">—</dd></div>
+      <div><dt>驱动状态</dt><dd id="pitchDrive">—</dd></div>
+      <div><dt>温度</dt><dd id="pitchTemp">—</dd></div>
+    </dl>
+  </article>
+</section>
+
+<section class="status">
+  <span class="chip" id="modeChip">模式 —</span>
+  <span class="chip" id="switchChip">S1 — · S2 —</span>
+  <span class="chip" id="runChip">板端状态 —</span>
+  <span class="chip" id="faultChip">故障 —</span>
+  <span class="chip" id="seqChip">seq —</span>
+</section>
+
+<section class="chart-block">
+  <div class="chart-head">
+    <h2>编码值随时间</h2>
+    <div class="legend"><span><i class="key fold"></i>折叠</span><span><i class="key pitch"></i>Pitch</span><span class="secondary">虚线 = 目标</span></div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="chart" role="img" aria-label="折叠与Pitch编码值最近30秒曲线"></canvas>
+    <div id="tooltip" class="tooltip" hidden></div>
+  </div>
+  <p class="secondary hint" id="chartNote">横轴：距最新状态行 / s；纵轴：MIT 原始编码 0–65535。</p>
+</section>
+
+<section class="build-block">
+  <div class="chart-head">
+    <h2>编译与烧录</h2>
+    <span class="secondary" id="buildState">未运行</span>
+  </div>
+  <div class="build-actions">
+    <button id="buildBtn">编译</button>
+    <button id="flashBtn" class="primary">编译并烧录</button>
+    <button id="programBtn">仅烧录</button>
+    <button id="cancelBtn" hidden>取消</button>
+  </div>
+  <pre id="buildLog" class="build-log" aria-live="polite" aria-label="编译烧录日志">尚未运行编译或烧录。</pre>
+  <p class="secondary hint">调用 <code>tools/sentry_build_flash.sh</code>；烧录经 DAPLink/CMSIS-DAP 写入并校验后复位，成功后自动重连串口。</p>
+</section>
+
+<footer class="secondary">
+  串口只读：仅解析 USB CDC 的 <code>SENTRY</code> 状态行（约 100&nbsp;ms 一行），不下发使能、标定或运动命令。
+  编码值由驱动器 MIT 位置字解析，量程 ±12.5&nbsp;rad 对应 0–65535；角度由板端 mrad 换算。
+</footer>
+<script nonce="{{nonce}}" src="{{script}}"></script></body></html>

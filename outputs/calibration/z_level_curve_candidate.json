@@ -1,0 +1,48 @@
+{
+  "model": "monotone_piecewise_linear_candidate",
+  "applied_to_firmware": false,
+  "validated_only_at_three_user_level_poses": true,
+  "dynamic_level_holding_verified": false,
+  "points": [
+    {
+      "pose": "unfolded",
+      "fold_raw": 38800,
+      "pitch_raw": 34433,
+      "source_file": "z_unfolded_level_reference.json"
+    },
+    {
+      "pose": "intermediate",
+      "fold_raw": 40762,
+      "pitch_raw": 33704,
+      "source_file": "z_mid_level_reference.json"
+    },
+    {
+      "pose": "folded",
+      "fold_raw": 45622,
+      "pitch_raw": 31439,
+      "source_file": "z_folded_level_reference.json"
+    }
+  ],
+  "segment_slopes_raw": [
+    -0.37155963302752293,
+    -0.4660493827160494
+  ],
+  "required_pitch_raw_envelope": [
+    31439,
+    34433
+  ],
+  "existing_pitch_limits": [
+    33223,
+    36011
+  ],
+  "pitch_limit_update_required": true,
+  "base_attitude_compensation_verified": false,
+  "status": "not_approved_for_motion_requires_scale_and_geometry_check",
+  "external_reduction_ratio": {
+    "fold": 1.0,
+    "pitch": 1.0
+  },
+  "raw_slope_is_not_mechanical_transmission_ratio": true,
+  "reason": "User confirmed previous level calibration incorrect; use *_corrected.json and ../z_correction/manifest.json",
+  "superseded": true
+}

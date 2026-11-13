@@ -1,0 +1,53 @@
+{
+  "physical_axis": "Pitch only, confirmed by user",
+  "meta": {
+    "magic": 1347571522,
+    "state": 3,
+    "rate": 1000000,
+    "candidate": 1,
+    "pass": 1,
+    "rx": 34,
+    "tx": 4126,
+    "fail": 0,
+    "psr": 1807,
+    "ecr": 0,
+    "count": 1,
+    "done": 1,
+    "last_id": 0
+  },
+  "motors": [
+    {
+      "esc": 1,
+      "feedback_can_id": 0,
+      "response_count": 34,
+      "register_mask": 255,
+      "register_values": {
+        "MST_ID": 0,
+        "ESC_ID": 1,
+        "TIMEOUT": 0,
+        "CTRL_MODE": 1,
+        "PMAX": 1095237632,
+        "VMAX": 1106247680,
+        "TMAX": 1092616192,
+        "CAN_BR": 4
+      },
+      "pvt": [
+        12.5,
+        30.0,
+        10.0
+      ],
+      "feedback_bytes": "01803f7ff8001e1c",
+      "sources": 3,
+      "raw_register_values": {
+        "MST_ID": 0,
+        "ESC_ID": 1,
+        "TIMEOUT": 0,
+        "CTRL_MODE": 1,
+        "PMAX": 1095237632,
+        "VMAX": 1106247680,
+        "TMAX": 1092616192,
+        "CAN_BR": 4
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "elf_sha256": "654d293c900930d18c6764885addc4d509c431aba2e0a2e7daab75df92797477",
+  "bin_sha256": "9bab79256b0c4aafa4056c05f755e3c8401854359fa9e8f3c523c9bb29a68233",
+  "fold_pitch_target": 29763,
+  "open_pitch_target": 36039,
+  "exact_raw_targets": true,
+  "verified_reset": true,
+  "motion_verified": false,
+  "post_reset_fold_feedback_range": [
+    29244,
+    29245
+  ],
+  "post_reset_fold_outside_limits": true
+}

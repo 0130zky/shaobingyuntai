@@ -1,0 +1,78 @@
+{
+  "new_lower_candidate": true,
+  "not_applied_to_limits": true,
+  "raw": 31439,
+  "raw_min": 31439,
+  "raw_max": 31439,
+  "motor_position_rad": -0.5067901611328125,
+  "motor_encoder_angle_deg": -29.036937331665087,
+  "previous_lower_raw": 33223,
+  "difference_raw": -1784,
+  "difference_deg": -38.99277891635724,
+  "samples": [
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 187973,
+      "rx_count": 30578
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188081,
+      "rx_count": 30585
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188192,
+      "rx_count": 30593
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188297,
+      "rx_count": 30600
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188405,
+      "rx_count": 30607
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188513,
+      "rx_count": 30614
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188621,
+      "rx_count": 30621
+    },
+    {
+      "raw": 31439,
+      "position_rad": -0.5067901611328125,
+      "velocity_rad_s": -0.0073261260986328125,
+      "drive_status": 0,
+      "rx_tick": 188729,
+      "rx_count": 30628
+    }
+  ]
+}

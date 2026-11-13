@@ -1,0 +1,163 @@
+{
+  "purpose": "open_pitch_target_explicitly_confirmed_by_user_current_pose",
+  "pitch_raw_target": 34370,
+  "samples": [
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        3,
+        6
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        18,
+        18
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        12,
+        3
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        3,
+        6
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38889,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        21,
+        21
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        15,
+        3
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        6,
+        9
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    },
+    {
+      "fold_raw": 38890,
+      "pitch_raw": 34370,
+      "drive": [
+        0,
+        0
+      ],
+      "ages": [
+        21,
+        21
+      ],
+      "master": 0,
+      "s1": 1,
+      "s2": 1
+    }
+  ],
+  "feedback_counts": [
+    [
+      16877,
+      17973
+    ],
+    [
+      16891,
+      17992
+    ],
+    [
+      16904,
+      18011
+    ],
+    [
+      16918,
+      18030
+    ],
+    [
+      16932,
+      18049
+    ],
+    [
+      16945,
+      18068
+    ],
+    [
+      16959,
+      18087
+    ],
+    [
+      16973,
+      18106
+    ]
+  ],
+  "applied_to_firmware": true,
+  "no_offset_conversion": true,
+  "deployment": "../open_pitch_34370/manifest.json"
+}

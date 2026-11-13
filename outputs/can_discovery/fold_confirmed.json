@@ -1,0 +1,53 @@
+{
+  "physical_axis": "Fold only, confirmed by user; authorized disable scan",
+  "meta": {
+    "magic": 1347571522,
+    "state": 3,
+    "rate": 1000000,
+    "candidate": 1,
+    "pass": 1,
+    "rx": 1,
+    "tx": 2079,
+    "fail": 0,
+    "psr": 1807,
+    "ecr": 0,
+    "count": 1,
+    "done": 1,
+    "last_id": 17
+  },
+  "motors": [
+    {
+      "esc": 1,
+      "feedback_can_id": 17,
+      "response_count": 1,
+      "register_mask": 0,
+      "register_values": {
+        "MST_ID": null,
+        "ESC_ID": null,
+        "TIMEOUT": null,
+        "CTRL_MODE": null,
+        "PMAX": null,
+        "VMAX": null,
+        "TMAX": null,
+        "CAN_BR": null
+      },
+      "pvt": [
+        null,
+        null,
+        null
+      ],
+      "feedback_bytes": "0197908007ff1d1b",
+      "sources": 4,
+      "raw_register_values": {
+        "MST_ID": 0,
+        "ESC_ID": 0,
+        "TIMEOUT": 0,
+        "CTRL_MODE": 0,
+        "PMAX": 0,
+        "VMAX": 0,
+        "TMAX": 0,
+        "CAN_BR": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "elf_sha256": "4fd4c56de455f9993bdf3c33e3f47bb97f671cdffed1b6b0bc55d530dcc97983",
+  "bin_sha256": "fdc6c21e2c1f0ae5bc671caa139948c7735a24c071328a1094dbb9ef9eeb9f81",
+  "fold_speed": 1.0,
+  "pitch_speed": 1.3,
+  "accel": 1.0,
+  "verified_reset": true,
+  "motion_verified": false
+}

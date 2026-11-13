@@ -1,0 +1,21 @@
+{
+  "target": "DM-MC02 / STM32H723",
+  "elf": "firmware/build/SentryH7/sentry_dm_mc02.elf",
+  "elf_sha256": "9496a86c1e641b8feae51b9c7f6531672f3422b7206482c95e9e62022267b72a",
+  "bin_sha256": "28d0882391d80440aaa56cc4f0f1281a375071dad94ca90f1c180aa7e2bf4a15",
+  "pitch_low_raw": 31439,
+  "level_points": [
+    [
+      38800,
+      34433
+    ],
+    [
+      40762,
+      33704
+    ],
+    [
+      45622,
+      31439
+    ]
+  ]
+}

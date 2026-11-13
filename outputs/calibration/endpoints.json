@@ -1,0 +1,697 @@
+{
+  "version": 1,
+  "status": "deployed_as_firmware_defaults",
+  "fold": {
+    "esc_id": 1,
+    "feedback_can_id": 17,
+    "endpoints": {
+      "folded": {
+        "captured_at": "2026-11-12T20:05:14.708420+08:00",
+        "raw_encoder": 45659,
+        "raw_min": 45659,
+        "raw_max": 45661,
+        "sample_count": 24,
+        "samples": [
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25b8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25b8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25b8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45660,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25c7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45661,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25d8007ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45660,
+            "velocity_raw": 2046,
+            "feedback_hex": "01b25c7fe7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45660,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25c7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2046,
+            "feedback_hex": "01b25b7fe7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45660,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25c8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45661,
+            "velocity_raw": 2049,
+            "feedback_hex": "01b25d8017fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45661,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25d7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45660,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25c7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45660,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25c7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25b8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25b8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2046,
+            "feedback_hex": "01b25b7fe7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2047,
+            "feedback_hex": "01b25b7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 45659,
+            "velocity_raw": 2048,
+            "feedback_hex": "01b25b8007fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          }
+        ],
+        "motor_disabled": true,
+        "position_range_verified": false,
+        "controller_flash_written": true,
+        "controller_storage": "firmware_embedded_defaults"
+      },
+      "unfolded": {
+        "captured_at": "2026-11-12T20:04:07.474702+08:00",
+        "raw_encoder": 38793,
+        "raw_min": 38792,
+        "raw_max": 38793,
+        "sample_count": 24,
+        "samples": [
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2046,
+            "feedback_hex": "0197897fe8001e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2048,
+            "feedback_hex": "0197888007ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2046,
+            "feedback_hex": "0197887fe7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2048,
+            "feedback_hex": "0197898007ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2048,
+            "feedback_hex": "0197898007ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38792,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197887ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2048,
+            "feedback_hex": "0197898008001e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 38793,
+            "velocity_raw": 2047,
+            "feedback_hex": "0197897ff7ff1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          }
+        ],
+        "motor_disabled": true,
+        "position_range_verified": false,
+        "controller_flash_written": true,
+        "controller_storage": "firmware_embedded_defaults"
+      }
+    },
+    "raw_span": 6866,
+    "encoder_increases_toward": "folded",
+    "endpoint_capture_complete": true,
+    "controller_flash_written": true
+  },
+  "pitch": {
+    "esc_id": 2,
+    "feedback_can_id": 0,
+    "endpoints": {
+      "lower": {
+        "raw_encoder": 29762,
+        "raw_min": 29762,
+        "raw_max": 29762,
+        "sample_count": 12,
+        "source_file": "z_folded_level_corrected.json",
+        "user_approved_as_lower_limit": true,
+        "controller_flash_written": true,
+        "controller_storage": "firmware_embedded_defaults"
+      },
+      "upper": {
+        "captured_at": "2026-11-12T20:10:46.239293+08:00",
+        "raw_encoder": 36011,
+        "raw_min": 36011,
+        "raw_max": 36011,
+        "sample_count": 24,
+        "samples": [
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fc1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fb1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fc1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fc1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fd1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          },
+          {
+            "raw_encoder": 36011,
+            "velocity_raw": 2047,
+            "feedback_hex": "028cab7ff7fe1e1c",
+            "mos_c": 30,
+            "rotor_c": 28,
+            "can_ecr": 0
+          }
+        ],
+        "motor_disabled": true,
+        "position_range_verified": true,
+        "mit_position_range_rad": [
+          -12.5,
+          12.5
+        ],
+        "motor_position_rad": 1.2373159380483703,
+        "controller_flash_written": true,
+        "controller_storage": "firmware_embedded_defaults"
+      }
+    },
+    "raw_span": 6249,
+    "encoder_increases_toward": "upper",
+    "endpoint_capture_complete": true,
+    "controller_flash_written": true
+  },
+  "controller_storage": "firmware_embedded_defaults",
+  "calibration_sector_written": false,
+  "z_linkage": {
+    "level_points": [
+      [
+        38800,
+        32744
+      ],
+      [
+        40763,
+        32125
+      ],
+      [
+        45622,
+        29762
+      ]
+    ],
+    "source_files": [
+      "z_unfolded_level_corrected.json",
+      "z_mid_level_corrected.json",
+      "z_folded_level_corrected.json"
+    ],
+    "applied_to_firmware": false,
+    "dynamic_level_holding_verified": false,
+    "deployment": "../z_correction/manifest.json",
+    "superseded_by": "active_sequential_configuration"
+  },
+  "active_sequential_configuration": {
+    "fold_open": 38800,
+    "fold_closed": 45628,
+    "pitch_fold": 29763,
+    "pitch_open_level": 34370,
+    "position_limit_interlock": false,
+    "absolute_position_clamp": false,
+    "source": "../parallel_motion/manifest.json",
+    "pitch_prep": null,
+    "fold_stages": 1,
+    "unfold_allowed": true,
+    "unfold_order": "parallel_fold_and_pitch",
+    "parallel_motion": true,
+    "manual_stick_proportional": true,
+    "independent_axis_acceleration": true
+  }
+}
