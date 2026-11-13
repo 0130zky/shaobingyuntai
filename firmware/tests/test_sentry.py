@@ -81,10 +81,29 @@ int main(void){
  rearm();step(2,1024,1684,42000,midpitch(),0);assert(fault==9&&!armed);
  rearm();for(int i=0;i<90;i++)step(2,1024,1024,42000,midpitch(),0);
  step(2,1024,1024,42000,midpitch(),1);assert(axis[0].active&&axis[1].active);
- // Parallel closing updates both motor references immediately, including from an open pose.
- step(1,1024,1024,38890,34370,0);
- step(2,1024,1024,38890,34370,1);
- assert(linkage.mode==Z_LINKED&&linkage.fold.p>38890&&linkage.pitch.p<34370);
+ // S1 permission toggles must not turn the unchanged S2 level into a new motion.
+ const unsigned hold_poses[2][2]={{38890,35000},{44000,32000}};
+ for(unsigned j=0;j<2;j++)for(unsigned k=0;k<2;k++) {
+  int left=k?1684:364;
+  step(1,left,1024,hold_poses[j][0],hold_poses[j][1],0);
+  step(2,left,1024,hold_poses[j][0],hold_poses[j][1],1);
+  assert(axis[0].active&&axis[1].active&&!fault&&automatic_request==0);
+  assert(command_raw[0]==hold_poses[j][0]&&command_raw[1]==hold_poses[j][1]);
+  for(int i=0;i<40;i++)step(2,left,1024,hold_poses[j][0],hold_poses[j][1],1);
+  assert(command_raw[0]==hold_poses[j][0]&&command_raw[1]==hold_poses[j][1]);
+ }
+ // A changed manual Pitch pose must survive S1 off/on with S2 still in middle.
+ step(1,1684,1024,38890,35111,0);step(2,1684,1024,38890,35111,1);
+ assert(command_raw[1]==35111&&linkage.pitch.v==0&&automatic_request==0);
+ // Simultaneous S1 enable and S2 change also require a later, distinct S2 command.
+ step(1,1684,1024,38890,35000,0);step(2,364,1024,38890,35000,1);
+ assert(command_raw[0]==38890&&command_raw[1]==35000&&automatic_request==0);
+ // S2 switches remain explicit parallel commands while S1 is already enabled.
+ step(2,1684,1024,38890,35000,1);
+ assert(automatic_request==1&&linkage.mode==Z_UNFOLDING);
+ float reverse_start=linkage.fold.p;
+ step(2,364,1024,38890,35000,1);
+ assert(automatic_request==-1&&linkage.mode==Z_LINKED&&linkage.fold.p>reverse_start&&linkage.pitch.p<35000);
  unsigned f=command_raw[0],p=command_raw[1];int overlap=0;
  for(int i=0;i<18000;i++){
   unsigned before_f=f,before_p=p;follow(364,1024,&f,&p);
@@ -99,9 +118,10 @@ int main(void){
  }
  assert(!fault&&overlap&&linkage.mode==Z_OPEN&&abs((int)p-34370)<2);
  int prior=motion_count;
- // S2 up also disables with S1 down.
+ // S2 up disables; up -> down with S1 kept enabled still starts closing.
  tick+=3;remote(2,1024,1024);sentry_remote.s2=1;feed(0,f,0);feed(1,p,0);
  Sentry_Control(.003f);assert(!axis[0].active&&!axis[1].active);
+ step(2,364,1024,f,p,1);assert(automatic_request==-1&&linkage.mode==Z_LINKED);
  // A parallel request outside old bounds starts with only its acceleration-limited step.
  const unsigned outside[4][2]={{29245,33057},{45629,32125},{42000,29761},{42000,36040}};
  for(unsigned k=0;k<4;k++) {
@@ -141,7 +161,7 @@ with tempfile.TemporaryDirectory() as td:
        '-I'+td,'-I'+str(root/'modules/folding_gimbal'),'-I'+str(root/'robots/sentry'),
        str(p/'harness.c'),str(root/'modules/folding_gimbal/z_linkage.c'),str(root/'modules/folding_gimbal/motion.c'),str(root/'modules/folding_gimbal/sentry_remote.c'),'-lm','-o',str(p/'test')]
   subprocess.run(cmd,check=True);subprocess.run([str(p/'test')],check=True)
-  print(f'PASS Sentry ready={ready}: calibration, save gate, rearm, watchdogs, input framing, trajectory')
+  print(f'PASS Sentry ready={ready}: calibration, S1 hold-on-reenable, manual pose retention, S2 edge commands, watchdogs and trajectory')
 # Exercise actual Flash record/commit logic using a byte-addressable fake sector.
 flash_stub=r'''
 #ifndef FLASH_STUB

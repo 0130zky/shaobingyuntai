@@ -33,6 +33,9 @@ static SentryCalibration cal;
 static Status status;
 static uint8_t calibration=1,valid,armed,fault;
 static uint8_t neutral[2],enable_sent[2];
+/* Keep command-edge history across Stop(): S1 permission is not a new S2 command. */
+static uint8_t s1_seen_enabled,previous_s2;
+static float automatic_request;
 static uint32_t enable_rx_count[2];
 static uint32_t enabling_since;
 static uint32_t mode_tick,tx_fail[2],poll_tick,enable_tick[2],disable_tick[2];
@@ -217,7 +220,18 @@ void Sentry_Control(float dt)
     Commands(f,now);
     SentryRemote_Poll(now);
     int rc=SentryRemote_Fresh(now), master=SentryRemote_Enabled(now);
-    float stick[2]={sentry_remote.s2==2?-1.0f:sentry_remote.s2==3?1.0f:0.0f,SentryRemote_Stick(1)};
+    int s1_enabled=rc && sentry_remote.s1==2;
+    if(!s1_enabled) {
+        s1_seen_enabled=0;automatic_request=0;previous_s2=sentry_remote.s2;
+    } else if(!s1_seen_enabled) {
+        /* Re-enabling S1 captures/holds measured positions. S2 must change again. */
+        s1_seen_enabled=1;automatic_request=0;previous_s2=sentry_remote.s2;
+    } else if(sentry_remote.s2!=previous_s2) {
+        previous_s2=sentry_remote.s2;
+        automatic_request=sentry_remote.s2==2?-1.0f:
+            sentry_remote.s2==3 && SENTRY_SEQ_UNFOLD_ALLOWED?1.0f:0.0f;
+    }
+    float stick[2]={automatic_request,SentryRemote_Stick(1)};
     int timing=isfinite(dt)&&dt>0&&dt<=0.020f;
     if(!rc) {if(armed) fault=1;armed=0;}
     if(!timing) {if(armed) fault=2;armed=0;}

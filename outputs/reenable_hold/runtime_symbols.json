@@ -1,0 +1,16 @@
+{
+  "armed": 536904323,
+  "automatic_request": 536904308,
+  "board_boot_beeps": 536872748,
+  "board_can_recoveries": 536871316,
+  "cal": 536904500,
+  "calibration": 536871172,
+  "fault": 536904322,
+  "feedback": 536904628,
+  "linkage": 536904536,
+  "previous_s2": 536904312,
+  "s1_seen_enabled": 536904313,
+  "sentry_remote": 536903136,
+  "status": 536904328,
+  "valid": 536904324
+}

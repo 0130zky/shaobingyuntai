@@ -21,6 +21,31 @@ void Sentry_Move(float *p,float *v,float goal,float speed,float accel,float dt)
     else *p+=step;
 }
 
+/* Clip position lead without repeatedly treating the feedback window as an
+ * endpoint. Keep the velocity that the bounded position actually advanced at. */
+static void Follow(float *p,float *v,float measured,float low,float high,float error,float dt)
+{
+    float previous=*p;
+    float proposed=*p+*v*dt;
+    *p=Sentry_Clamp(proposed,fmaxf(low,measured-error),fminf(high,measured+error));
+    float actual=(*p-previous)/dt;
+    if(*p!=proposed && fabsf(actual)<fabsf(*v)) *v=actual;
+}
+
+void Sentry_Track(float *p,float *v,float goal,float measured,float speed,float accel,
+                  float low,float high,float error,float dt)
+{
+    float distance=goal-*p;
+    float maximum=fminf(speed,sqrtf(2*accel*error));
+    float desired=copysignf(fminf(maximum,sqrtf(2*accel*fabsf(distance))),distance);
+    *v+=Sentry_Clamp(desired-*v,-accel*dt,accel*dt);
+    /* Stop at the real destination only; the measured +/- error window moves. */
+    if(distance>=0 && *v>=0) high=fminf(high,goal);
+    if(distance<=0 && *v<=0) low=fmaxf(low,goal);
+    Follow(p,v,measured,low,high,error,dt);
+    if(*p==goal) *v=0;
+}
+
 /* Manual velocity is proportional to stick amplitude. Avoid integrating a
  * distant goal and then chasing it at a fixed speed, which saturates small sticks. */
 void Sentry_Jog(float *p,float *v,float *goal,float measured,float stick,float sign,
@@ -35,10 +60,6 @@ void Sentry_Jog(float *p,float *v,float *goal,float measured,float stick,float s
     float braking=sqrtf(2*accel*fmaxf(distance,0));
     desired=Sentry_Clamp(desired,-braking,braking);
     *v+=Sentry_Clamp(desired-*v,-accel*dt,accel*dt);
-    float previous=*p;
-    *p=Sentry_Clamp(*p+*v*dt,fmaxf(low,measured-error),fminf(high,measured+error));
-    /* Position following saturation must not leave a nonzero velocity request. */
-    float actual=(*p-previous)/dt;
-    if(fabsf(actual)<fabsf(*v)) *v=actual;
+    Follow(p,v,measured,low,high,error,dt);
     *goal=*p; /* No queued motion is left behind on release or reversal. */
 }

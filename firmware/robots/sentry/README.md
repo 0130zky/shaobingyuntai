@@ -57,6 +57,7 @@ cmake --preset Sentry
 cmake --build --preset Sentry
 python3 tests/test_z_linkage.py
 python3 tests/test_manual_pitch.py
+python3 tests/test_automatic_speed.py
 python3 tests/test_sentry.py
 python3 tests/test_mc02_transport.py
 python3 tests/check_template.py build/SentryH7
@@ -69,3 +70,22 @@ python3 tests/check_template.py build/SentryH7
 z_mode：0失能、2并行折叠中、3展开完成、4折叠完成、5并行展开中、7保持；1/6/8为旧版本兼容保留值。
 fold_pitch_target/open_pitch_target报告两种Pitch目标，parallel_motion=1表示并行版本。
 板载蜂鸣器PB15/TIM12_CH2正常启动响两下，每声100ms，后台执行；每次上电/复位都会响。
+
+## S1重新使能保持原位
+
+S1上/中位失能后再拨下位，两轴以当时反馈编码作为保持目标，自动动作请求清零，不把S2既有档位当作新的动作。
+S1已下位时再切换S2才启动动作；S2上位失能后切中/下仍是明确的新动作请求。
+同时改变S1和S2时先按重新使能保持处理，需后续再切一次S2。
+这能保留失能前/失能期间手动改变的Pitch姿态，不自动拉回34370或29763。
+部署证据outputs/reenable_hold/。主机测试覆盖S2中/下固定时反复切S1、Pitch手动位置保留、S1/S2同时切换，以及S1已使能时的S2命令。
+现场S2固定中位的一轮S1上→下→上测试，62个有效使能样本：Pitch反馈/目标34392，Fold反馈38857、目标38858，轨迹速度0，自动请求0、故障0。
+记录开始时另有已锁存的遥控故障1，回有效失能档后清除；本轮有效使能阶段未再出现。不能据此认定更早每次切换的全部原因都相同。
+
+## 自动动作速度修正
+
+自动轨迹原先把反馈附近的跟随窗口当成终点，反复减速并清零速度；高加速度时更容易发生。
+现在按真实动作终点计算制动距离，跟随窗口仅限制位置超前，不作为停车点。
+自动与满杆遥控共用 min(SPEED, sqrt(2*ACCEL*ERROR_RAD)) 速度包络及位置跟随积分；两轴加速度仍各自独立。
+四个参数保留用户当前的1200，未更改目标编码。对应包络约10.95 rad/s，增大SPEED不会突破此包络。
+test_automatic_speed.py覆盖固定3 rad/s反馈下800/800、1200/800、1200/1200三组参数不再反复清零、自动与满杆一致、调速、到位、反向和阻塞反馈限幅。
+这些是软件轨迹测试，实际机构速度需现场验证。

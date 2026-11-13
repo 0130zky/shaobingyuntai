@@ -26,9 +26,7 @@ static void Track(ZTrajectory *a,float measured,float goal,float speed,float acc
  /* Only the protocol domain and relative following error constrain commands.
   * Captured endpoints are destinations, not position-limit interlocks. */
  a->goal=Sentry_Clamp(goal,fmaxf(0,measured-c->error),fminf(65535,measured+c->error));
- Sentry_Move(&a->p,&a->v,a->goal,speed,accel,dt);
- a->p=Sentry_Clamp(a->p,fmaxf(0,measured-c->error),fminf(65535,measured+c->error));
- if((a->p<=0&&a->v<0)||(a->p>=65535&&a->v>0))a->v=0;
+ Sentry_Track(&a->p,&a->v,goal,measured,speed,accel,0,65535,c->error,dt);
 }
 int ZLink_Step(ZLinkage *z,const ZConfig *c,float fold,float pitch,float vf,float vp,
                float left,float right,float dt,uint32_t now)

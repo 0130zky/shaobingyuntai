@@ -1,0 +1,8 @@
+{
+  "verified_reset": true,
+  "feedback_refresh_verified": true,
+  "boot_beeps": 2,
+  "physical_motion_tested": false,
+  "elf_sha256": "ba136442b5aad5f30a1ad3e789d235ebdbc8dcecd101ff0cc0c8851dc245da36",
+  "bin_sha256": "d3b6770c92428f3febdb921c57fa45dd350fc631c59140ba0a4c540b9e9bbc97"
+}

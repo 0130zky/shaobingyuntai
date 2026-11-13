@@ -1,0 +1,4 @@
+Software example with prescribed feedback, not measured motor performance.
+speed=800 accel=800: prescribed_feedback=3rad/s, mean_velocity_command=1.200rad/s, zero_velocity_ticks=100/200
+speed=1200 accel=800: prescribed_feedback=3rad/s, mean_velocity_command=1.200rad/s, zero_velocity_ticks=100/200
+speed=1200 accel=1200: prescribed_feedback=3rad/s, mean_velocity_command=0.000rad/s, zero_velocity_ticks=200/200

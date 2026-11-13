@@ -1,13 +1,16 @@
 {
-  "armed": 536904315,
-  "board_boot_beeps": 536872748,
-  "board_can_recoveries": 536871316,
-  "cal": 536904492,
   "calibration": 536871172,
-  "fault": 536904314,
-  "feedback": 536904620,
-  "linkage": 536904528,
+  "board_can_recoveries": 536871316,
+  "board_boot_beeps": 536872748,
   "sentry_remote": 536903136,
-  "status": 536904320,
-  "valid": 536904316
+  "automatic_request": 536904308,
+  "previous_s2": 536904312,
+  "s1_seen_enabled": 536904313,
+  "fault": 536904322,
+  "armed": 536904323,
+  "valid": 536904324,
+  "status": 536904328,
+  "cal": 536904500,
+  "linkage": 536904536,
+  "feedback": 536904628
 }

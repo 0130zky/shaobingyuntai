@@ -19,12 +19,12 @@ static float simulate(float stick){
  float p=32768,v=0,goal=p,measured=p,sum=0;
  float accel=SENTRY_PITCH_ACCEL*counts,speed=SENTRY_PITCH_SPEED*counts;
  float maximum=fminf(speed,sqrtf(2*accel*131.07f));
- for(int i=0;i<400;i++){
+ for(int i=0;i<200;i++){
   float previous=p,previous_v=v;
   Sentry_Jog(&p,&v,&goal,measured,stick,1,speed,accel,0,65535,131.07f,262.14f,.003f);
   assert(fabsf(v-previous_v)<=accel*.003f+.01f);
   assert(goal==p&&fabsf(p-measured)<=131.08f);
-  measured=p;if(i>=300)sum+=p-previous;
+  measured=p;if(i>=100)sum+=p-previous;
  }
  float observed=sum/(100*.003f);
  assert(fabsf(observed-stick*maximum)<=maximum*.02f);

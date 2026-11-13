@@ -1,0 +1,12 @@
+{
+  "elf_sha256": "5884bb242d0857254bf16ebef5e28f5d94d3b312ba632d73f6d02d741104f6e3",
+  "bin_sha256": "f2257fbf110ca47eaa8392fe8dd3445489eb05c59bd7ee4e95b635aa4ab5ab04",
+  "s1_reenable_holds_actual_pose": true,
+  "explicit_s2_edge_starts_parallel_motion": true,
+  "verified_reset": true,
+  "physical_reenable_tested": true,
+  "physical_test_evidence": "s1_hold_trace_analysis.json",
+  "physical_test_pitch_raw": 34392,
+  "physical_test_fold_raw": 38857,
+  "physical_test_reference_velocities_zero": true
+}
